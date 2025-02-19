@@ -36,13 +36,116 @@ Route::get('/exer1', function (){
 
 });
 
+Route::get('/exer2', function (){
+
+    return view('exer2');
+
+});
+
+Route::get('/exer3', function (){
+
+    return view('exer3');
+
+});
+
+Route::get('/exer4', function (){
+
+    return view('exer4');
+
+});
+
+Route::get('/exer5', function (){
+
+    return view('exer5');
+
+});
+
+Route::get('/exer6', function (){
+
+    return view('exer6');
+
+});
+
+Route::get('/exer7', function (){
+
+    return view('exer7');
+
+});
+
 Route::post('/exer1Resp', function (Request $resquest){
 
-    $valor1 = intval($resquest->input('valor1'));
-    $valor2 = intval($resquest->input('valor2'));
+    $valor1 = floatval($resquest->input('valor1'));
+    $valor2 = floatval($resquest->input('valor2'));
+    $valor3 = floatval($resquest->input('valor3'));
 
-    $soma = $valor1 + $valor2;
+    $soma = $valor1 + $valor2 + $valor3;
 
-    return view('exer1', compact('soma'));
+    $media = number_format(($soma / 3), 2, ',', '.');
+
+    return view('exer1', compact('media'));
+
+});
+
+Route::post('/exer2Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+
+    $valorConvertido = number_format((($valor1 * 1.8) + 32), 1);
+
+    return view('exer2', compact('valorConvertido'));
+
+});
+
+Route::post('/exer3Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+
+    $valorConvertido =  number_format(((5/9) * ($valor1 - 32)), 1);
+
+    return view('exer3', compact('valorConvertido'));
+
+});
+
+Route::post('/exer4Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+    
+    $valor2 = floatval($resquest->input('valor2'));
+
+    $areaRetangulo = $valor1 * $valor2;
+
+    return view('exer4', compact('areaRetangulo'));
+
+});
+
+Route::post('/exer5Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+
+    $areaCirculo = number_format((pi() * ($valor1 **2)), 2);
+
+    return view('exer5', compact('areaCirculo'));
+
+});
+
+Route::post('/exer6Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+    
+    $valor2 = floatval($resquest->input('valor2'));
+
+    $perimetroRetangulo = (2 * $valor1) + (2 * $valor2);
+
+    return view('exer6', compact('perimetroRetangulo'));
+
+});
+
+Route::post('/exer7Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+
+    $perimetroCirculo = number_format(( (2 * pi()) * $valor1), 2);
+
+    return view('exer7', compact('perimetroCirculo'));
 
 });
