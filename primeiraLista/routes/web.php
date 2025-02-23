@@ -72,6 +72,24 @@ Route::get('/exer7', function (){
 
 });
 
+Route::get('/exer8', function (){
+
+    return view('exer8');
+
+});
+
+Route::get('/exer9', function (){
+
+    return view('exer9');
+
+});
+
+Route::get('/exer10', function (){
+
+    return view('exer10');
+
+});
+
 Route::post('/exer1Resp', function (Request $resquest){
 
     $valor1 = floatval($resquest->input('valor1'));
@@ -147,5 +165,37 @@ Route::post('/exer7Resp', function (Request $resquest){
     $perimetroCirculo = number_format(( (2 * pi()) * $valor1), 2);
 
     return view('exer7', compact('perimetroCirculo'));
+
+});
+
+Route::post('/exer8Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+    
+    $valor2 = floatval($resquest->input('valor2'));
+
+    $resultado = $valor1 ** $valor2;
+
+    return view('exer8', compact('resultado'));
+
+});
+
+Route::post('/exer9Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+
+    $centimetros = $valor1 * 100;
+
+    return view('exer9', compact('centimetros'));
+
+});
+
+Route::post('/exer10Resp', function (Request $resquest){
+
+    $valor1 = floatval($resquest->input('valor1'));
+
+    $milhas = $valor1 * 0.621371;
+
+    return view('exer10', compact('milhas'));
 
 });
