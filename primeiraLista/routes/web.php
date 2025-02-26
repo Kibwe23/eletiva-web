@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Exercicioscontroler;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome'); 
 });
@@ -24,11 +26,7 @@ Route::get('/bem-vindo', function (){
 
 });
 
-Route::get('/exercicios', function (){
-
-    return view('layout');
-
-});
+Route::get('/exercicios', [Exercicioscontroler::class, 'abrirListaExercicios']);
 
 Route::get('/exer1', function (){
 
@@ -90,19 +88,7 @@ Route::get('/exer10', function (){
 
 });
 
-Route::post('/exer1Resp', function (Request $resquest){
-
-    $valor1 = floatval($resquest->input('valor1'));
-    $valor2 = floatval($resquest->input('valor2'));
-    $valor3 = floatval($resquest->input('valor3'));
-
-    $soma = $valor1 + $valor2 + $valor3;
-
-    $media = number_format(($soma / 3), 2, ',', '.');
-
-    return view('exer1', compact('media'));
-
-});
+Route::post('/exer1Resp', [Exercicioscontroler::class, 'respExer1']);
 
 Route::post('/exer2Resp', function (Request $resquest){
 
